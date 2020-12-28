@@ -12,11 +12,11 @@ var swiper = new Swiper('.swiper-container', {
         spaceBetween: 20,
       },
       768: {
-        slidesPerView: 4,
+        slidesPerView: 3,
         spaceBetween: 40,
       },
       1024: {
-        slidesPerView: 5,
+        slidesPerView: 3,
         spaceBetween: 50,
       },
     }
@@ -42,14 +42,14 @@ vu.backgroundImage = response[0].thumbnail;
 for(var i = 0; i<=5 ; i++){
   let view = document.createElement('div')
   let div = document.createElement('div')
- 
+
   let title = document.createElement('p')
   title.innerHTML = response[i].title;
- 
+
   div.innerHTML = response[i].embed
    view.appendChild(div);
   view.appendChild(title);
-  vu.appendChild(view); 
+  vu.appendChild(view);
 }
 })
 .catch(err => {
@@ -68,20 +68,24 @@ fetch("https://webit-news-search.p.rapidapi.com/search?q=soccer&language=en", {
 const news = document.getElementById('news-container');
 
 for(var i = 0; i <=6 ; i++){
-   
+
 
 let title =  document.createElement('div');
-let text = document.createElement('p');
-// title.classList.add('swiper-slide');
-text.innerHTML = response.data.results[i].title;
-// title.appendChild(text);
-// news.appendChild(text.innerHTML);
-  title.appendChild(text)
+let nImg =  document.createElement('img');
+nImg.setAttribute('src',response.data.results[i].image);
+// let text = document.createElement('p');
+
+//   title.append?Child(text)
+  title.appendChild(nImg)
   title.classList.add('swiper-slide');
+  
+
   news.appendChild(title);
-  console.log(title);
+  console.log(response.data.results[i].image);
+
+//   console.log(title);
 }
-console.log(news)
+// console.log(news)
 
 
 })
